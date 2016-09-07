@@ -1,0 +1,178 @@
+@import 'base.style.css'; /*import fonts*/
+.profile-title-panel{
+  background-color: white;
+  height:60px;
+  font-family: Oswald-Regular-Roman, Tahoma, sans-serif !important;
+  font-size:2rem;
+}
+.profile-title-div{
+  padding-top: 20px;
+  padding-left: 40px;
+}
+
+.data-reactroot{
+  width: 100%;
+  height: 100%;
+}
+.profile-content{
+  background-color: #ebeef0;
+  padding-left:55px;
+  margin:0 auto;
+  /*position: fixed;*/
+  width: 100%;
+  height:100%;
+  min-height: 600px
+}
+.profile-layer{
+  padding: 5px 5px 0px 5px;
+}
+.profile-container{
+  width: 100%;
+  margin-bottom: 10px;
+}
+.profile-table{
+  width: 100%;
+}
+
+/* baseinfo section */
+.baseInfo{
+  height: 240px;
+}
+.baseInfo-Img{
+  width:150px;
+  height:150px;
+  border-radius: 85px;
+  border:6px solid lightgray;
+}
+.baseInfo-Name{
+  font-family: Oswald-Regular-Roman, Tahoma, sans-serif;
+  background-color: white;
+  color: #39c2d7;
+  font-size: 25px;
+  text-transform: uppercase;
+}
+.baseInfo-JobTitle{
+  font-family: "Source Sans Pro";
+  background-color: white;
+  color: #a3c644;
+  font-size: 20px;
+}
+.baseInfo-icons-style{
+  font-size:20px;
+  color:#c7c7c7;
+  margin-top: 3px;
+}
+.baseInfo-icons-span{
+  font-family: 'Source Sans Pro';
+  color:#c7c7c7;
+  font-size: 14px;
+  vertical-align: top;
+  margin-left: 6px;
+  line-height: 25px;
+}
+
+.editProfile-box{
+  width:50%;
+  display:inline-block;
+  height:100%;
+  padding-top:25px;
+}
+/* my posts section */
+.myposts-div-contain-table{
+  width: 100%;
+  padding: 0;
+}
+
+/* edit profile section */
+.editProfile-Img{
+  width:150px;
+  height:150px;
+  border-radius: 85px;
+  border:6px solid lightgray;
+}
+.display-none{
+  display:none;
+}
+.editProfile-label{
+  width: 200px;
+  display: inline-block;
+  padding-right: 20px;
+  text-align: center;
+  color: #c7c7c7;
+}
+.editProfile-label + input{
+  height: 30px;
+  width: 250px;
+  padding: 0 4px;
+}
+.editProfile-label + select{
+  height: 70px;
+  width: 250px;
+}
+.editProfile-div{
+  padding: 20px 20px 0px 25px;
+}
+.editProfile-button{
+  margin: 0px 20px 20px 0px;
+}
+.editProfile-upload{
+  padding: 0 10px;
+  height: 25px;
+  line-height: 25px;
+  position: relative;
+  cursor: pointer;
+  color: #888;
+  background: #fafafa;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  text-decoration: none
+}
+.editProfile-upload input{
+  position: absolute;
+  font-size: 100px;
+  right: 0;
+  top: 0;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  cursor: pointer
+}
+.editProfile-upload:hover{
+  color: #444;
+  background: #eee;
+  border-color: #ccc;
+  text-decoration: none
+}
+
+.editProfile-verify{
+  font-size: 14px;
+  padding-left: 230px;
+}
+
+.subscription{
+    display: inline-block;
+}
+.buttons {
+  padding-top:250px;
+}
+
+/* this is enhance for the material provided css */
+.mdl-card__title-text{
+  font-size: 16px;
+  font-weight: 100;
+  line-height: 15px;
+}
+.mdl-badge{
+  border: 1px solid lightgrey;
+  border-radius: 4px;
+  margin-right: 8%;
+  padding:5px;
+}
+.mdl-badge:hover{
+  color:white;
+  background-color: #39c2dd;
+  transition:0.5s;
+}
