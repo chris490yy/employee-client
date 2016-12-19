@@ -23,7 +23,7 @@ class SingleEmployeePageComponent extends React.Component{
     return createdDate;
   }
     render(){
-        console.log(this.props.employee);
+        //console.log(this.props.employee);
         return (
             <div className="signle-employee-page">
                 <div className="mdl-grid">
@@ -83,7 +83,8 @@ class SingleEmployeePageComponent extends React.Component{
                             </button>
                       </div>
                       <div className="mdl-cell mdl-cell--1-col">
-                            <button className="mdl-button mdl-js-button mdl-button--accent employee-item-button">
+                            <button className="mdl-button mdl-js-button mdl-button--accent employee-item-button"
+                            onClick={this.deletePost.bind(this, this.props.employee)}>
                               删除
                             </button>
                       </div>
@@ -94,9 +95,10 @@ class SingleEmployeePageComponent extends React.Component{
 
 
     }
-    deletePost() {
-        this.props.asynDeleteMiddleware(this.props.article._id, this.props.article.topic);
-        hashHistory.push('/articles');
+    deletePost(employeeObj) {
+        //console.log(employeeObj);
+        this.props.asynDeleteMiddleware(this.props.employee._id, this.props.employee.department);
+        hashHistory.push('/employees');
     }
     editPost(employeeObj) {
         console.log(employeeObj);

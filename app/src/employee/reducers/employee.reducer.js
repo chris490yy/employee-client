@@ -19,7 +19,8 @@ const employeeReducer = (state = [], action) => {
       }
     case 'DELETE_EMPLOYEE' :
       let index = state.indexOf(action.employee);
-      return state.splice(index, 1);
+      state.splice(index, 1);
+      return state;
 
     default:
       return state;

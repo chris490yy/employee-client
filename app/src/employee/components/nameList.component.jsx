@@ -18,7 +18,6 @@ class NameList extends React.Component{
   }
   render() {
     let employees;
-    //console.log(this.props, '~');
     if(this.props.employees.length !== 0){
       employees = this.props.employees
       .filter((employee)=>{
@@ -27,6 +26,8 @@ class NameList extends React.Component{
       .map((employee)=>{
         return this.createEmployeeItem(employee);
       });
+    } else {
+      employees = [];
     }
 
     return (
