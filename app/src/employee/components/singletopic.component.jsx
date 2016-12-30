@@ -34,6 +34,7 @@ class SingleTopicComponent extends React.Component{
   }
 
   jumpPage(department) {
+    console.log("jump")
     if(department !== '新员工') {
       this.props.asynGetEmployeeByDepartmentMiddleware(department);
     }

@@ -18,7 +18,7 @@ class HomeComponent extends React.Component{
 		super();
 		this.state = {
 			departments : []
-		}
+		};
 	}
 
 	componentWillMount() {
@@ -26,41 +26,31 @@ class HomeComponent extends React.Component{
 	}
 
 	ajaxCallForCategory() {
+		const NoEmployee = "总人数 0 人, 正式员工 0 人， 临时工 0 人";
+	    let employeesByDepartment = [];
 	    let departmentNameList = departmentList.map((department) => {
 	        return department.departmentName;
 	    });
-	    axios.get('http://localhost:8000/employees').then((res) => {
-	        departmentNameList.forEach((departmentName, index) => {
-	            let employeesByDepartment = [];
-	            res.data.employees.forEach((employee) => {
-	                if(employee.department === departmentName) {
-	                    employeesByDepartment.push(employee);
-	                }
-	            });  
-	            let totalNumber = employeesByDepartment.length;
-	            if(departmentName !== '新员工') {	            	
-		            if(totalNumber === 0) {
-		                departmentList[index].description = departmentList[index].description.replace('Total', '0');
-		                departmentList[index].description = departmentList[index].description.replace('Temp', '0');
-		                departmentList[index].description = departmentList[index].description.replace('Perm', '0');
-		            } else {
-		                let temporaryNumber = employeesByDepartment.filter((employee) => {
-		                    return employee.position === "临时工";
-		                }).length;
-		                let permanentNumber = totalNumber - temporaryNumber;
-		                departmentList[index].description = departmentList[index].description.replace('Total', totalNumber);
-		                departmentList[index].description = departmentList[index].description.replace('Temp', temporaryNumber);
-		                departmentList[index].description = departmentList[index].description.replace('Perm', permanentNumber);
-		            }                           
-	            }
-	        });
-	        this.setState({departments: departmentList});
-    }).catch((err) => console.log(err, 'get employees error'));
-}
 
+	    departmentNameList.forEach((departmentName, index) => {
+	    	if(departmentName !== '新员工') {	
+		    	axios.get('http://localhost:8000/employees/number/' + departmentName).then((res) => {
+		    		let employees = res.data.employees;
+		    		if(employees.total === 0) {
+		    			departmentList[index].description = NoEmployee;
+		    		} else {
+		                let permanentNumber = employees.total - employees.tempo;
+		                departmentList[index].description = this.employeesNumber(employees.total, employees.tempo, permanentNumber);
+		    		}
+		    		employeesByDepartment.push(departmentList[index]);
+	    			this.setState({departments: employeesByDepartment});
+		    	})
+		    	.catch((err) => console.log(err, 'get employees error'));
+		    }
+	    });
+	}
 
 	render() {
-
 		return (
 			<div>
 				<div className="topbar">
@@ -73,6 +63,10 @@ class HomeComponent extends React.Component{
 
 			)
 
+	}
+
+	employeesNumber(total, tempo, perma) {
+		return "总人数 " + total + "人, 正式员工 " + perma + "人， 临时工 " + tempo + "人";
 	}
 }
 function mapDispatchToProps(dispatch) {
