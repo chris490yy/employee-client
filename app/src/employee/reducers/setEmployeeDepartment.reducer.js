@@ -1,6 +1,5 @@
 'use strict';
 
-
 const setEmployeeDepartment = (state = '总经办', action) => {
 
   switch (action.type) {

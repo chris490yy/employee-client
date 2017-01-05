@@ -64,6 +64,7 @@ class SidebarComponent extends React.Component{
 
 	goToDepartment(department){
 		this.props.asynGetEmployeeByDepartmentMiddleware(department);
+		this.props.resetCurrentEmployee();
 		hashHistory.push('/employees');
 	}
 }

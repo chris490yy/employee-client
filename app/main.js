@@ -6,6 +6,7 @@ import SignupComponent from './src/user/components/signup.component.jsx';
 import NoMatchComponent from './src/user/components/signup.component.jsx';
 import HomeComponent from './src/core/containers/home.component.jsx';
 import EmployeesComponent from './src/employee/containers/employee.component.jsx';
+import PostComponent from './src/employee/components/post.component.jsx';
 import ProfileComponent from './src/user/containers/profile.component.jsx';
 import LandingComponent from './src/user/containers/landing.component.jsx';
 import SelectedEmployeeComponent from './src/employee/containers/selectedEmployee.component.jsx';
@@ -24,6 +25,8 @@ ReactDOM.render((
 	<Route path='/employees' component={EmployeesComponent} />
 	<Route path='/employees/:id' component={SelectedEmployeeComponent} />
 	<Route path='/profile' onEnter={notLogin} component={ProfileComponent} />
+    <Route path='/post' component={PostComponent} />
+
 	</Router>
 	</Provider>
 	), document.getElementById('content'));

@@ -22,6 +22,13 @@ const employeeReducer = (state = [], action) => {
       state.splice(index, 1);
       return state;
 
+    case 'UPDATE_EMPLOYEE' : 
+      let updateIndex = state.findIndex(employee => {
+        return employee._id === action.employee._id
+      });
+      state[updateIndex] = action.employee;
+      return state;
+      
     default:
       return state;
   }

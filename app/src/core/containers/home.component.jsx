@@ -22,6 +22,7 @@ class HomeComponent extends React.Component{
 	}
 
 	componentWillMount() {
+
 		this.ajaxCallForCategory();
 	}
 

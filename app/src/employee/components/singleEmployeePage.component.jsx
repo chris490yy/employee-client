@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link, hashHistory } from 'react-router';
 import cookie from 'react-cookie';
+import store from '../../../store.js';
+
+
 require('../../../styles/singlearticlepage.style.css');
 
 
@@ -23,7 +26,7 @@ class SingleEmployeePageComponent extends React.Component{
     return createdDate;
   }
     render(){
-        //console.log(this.props.employee);
+        console.log(store.getState().currentEmployee, "in single currentEmployee");
         return (
             <div className="signle-employee-page">
                 <div className="mdl-grid">
@@ -50,7 +53,7 @@ class SingleEmployeePageComponent extends React.Component{
                   </div>
                   <div className="mdl-cell mdl-cell--3-col employee-col-div">
                         <div className="employee-item-title">出生日期</div>
-                        <div className="employee-item-content">{this.props.employee.birthday}</div>
+                        <div className="employee-item-content">{this.getInitialDate(this.props.employee.birthday)}</div>
                   </div>
                   <div className="mdl-cell mdl-cell--3-col employee-col-div">
                         <div className="employee-item-title">身份证</div>
@@ -66,11 +69,11 @@ class SingleEmployeePageComponent extends React.Component{
                   </div>
                   <div className="mdl-cell mdl-cell--3-col employee-col-div">
                         <div className="employee-item-title">入职时间</div>
-                        <div className="employee-item-content">{this.props.employee.onBoardDate}</div>
+                        <div className="employee-item-content">{this.getInitialDate(this.props.employee.onBoardDate)}</div>
                   </div>
                   <div className="mdl-cell mdl-cell--3-col employee-col-div">
-                        <div className="employee-item-title">合同号</div>
-                        <div className="employee-item-content">{this.props.employee.contractNumber}</div>
+                        <div className="employee-item-title">部门</div>
+                        <div className="employee-item-content">{this.props.employee.department}</div>
                   </div>
                 </div>
 
@@ -92,19 +95,23 @@ class SingleEmployeePageComponent extends React.Component{
             </div>
 
             )
-
-
     }
     deletePost(employeeObj) {
-        //console.log(employeeObj);
         this.props.asynDeleteMiddleware(this.props.employee._id, this.props.employee.department);
         hashHistory.push('/employees');
     }
     editPost(employeeObj) {
-        console.log(employeeObj);
+        this.props.setCurrentEmployee(this.props.employee);
+        this.props.asynGetEmployeeByDepartmentMiddleware("新员工");
+        hashHistory.push('/employees');
     }
-    subscribePost() {
 
+    getInitialDate(birthday) {
+      if(!birthday) {
+        console.log(birthday, "wrong birthday!!!!!")
+        return;
+      }
+      return birthday.slice(0,10);
     }
 }
 export default SingleEmployeePageComponent;

@@ -11,7 +11,7 @@ class ContentComponent extends React.Component {
       if(this.props.department === '新员工'){
           return (
               <div>
-                <p>"new post"</p>
+                <PostComponent {...this.props}/>
               </div>
             )
       } else {
